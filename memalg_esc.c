@@ -100,14 +100,14 @@ memalg_esc( page_t p, pagetable_t pt )
 				best_idx = qhead;
 				best_lvl = 1;
 			}
-			/* second class: referenced, but not modified */
-			else if ( pe->referenced && !pe->modified &&
+			/* second class: not referenced but modified */
+			else if ( !pe->referenced && pe->modified &&
 					  best_lvl > 2 ) {
 				best_idx = qhead;
 				best_lvl = 2;
 			}
-			/* third class: not referenced but modified */
-			else if ( !pe->referenced && pe->modified &&
+			/* third class: referenced, but not modified */
+			else if ( pe->referenced && !pe->modified &&
 					  best_lvl > 3 ) {
 				best_idx = qhead;
 				best_lvl = 3;
